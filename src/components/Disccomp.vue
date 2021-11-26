@@ -90,13 +90,6 @@ header {
     height: calc(100vh - 60px);
     background-color: #1E2D3B;
     overflow-y: scroll;
-    
-
-    .loadingPage {
-        text-align: center;
-        font-size: 40px;
-        color: white;
-    }
 
     #containerDiscs {
         width: 70%;
