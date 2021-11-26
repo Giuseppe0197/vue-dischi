@@ -1,11 +1,22 @@
 <template>
   <section>
       <header>
-          <font-awesome-icon icon="fab fa-spotify"></font-awesome-icon>
+          <i class="fab fa-spotify"></i>
       </header>
 
       <div id="container">
-          <Discsubcomp/>
+
+          <div id="containerDiscs">
+
+          <Discsubcomp
+          v-for="disc, i in discList" 
+          :key="i"
+          :details="disc"
+          />
+
+          </div>
+
+
       </div>
       
   </section>
@@ -15,14 +26,43 @@
 
 <script>
 
-import Discsubcomp from '@/components/Discsubcomp.vue'
+import axios from "axios";
+import Discsubcomp from '@/components/Discsubcomp.vue';
+
+
 export default {
   name: 'Disccomp',
   components: {
       Discsubcomp
+  },
+
+  data() {
+      return {
+          apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
+
+          discList: []
+      }
+  },
+
+  created() {
+      this.getdiscSpot()
+  },
+
+  methods: {
+      getdiscSpot() {
+
+          axios
+          .get(this.apiUrl)
+          .then((result) => {
+              
+              this.discList = result.data.response
+
+          })
+      }
   }
   
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -31,16 +71,31 @@ export default {
 header {
     height: 60px;
     background-color: #2E3A46;
+    
 
     .fa-spotify {
-        color: black;
-        width: 50px;
+        color: #1ED760;
+        font-size: 40px;
+        /* vertical-align: middle; */
+        line-height: 60px;
+        margin-left: 10px;
     }
 }
 
 #container {
     height: calc(100vh - 60px);
     background-color: #1E2D3B;
+    overflow-y: scroll;
+    
+
+    #containerDiscs {
+        width: 70%;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
 }
     
 </style>
