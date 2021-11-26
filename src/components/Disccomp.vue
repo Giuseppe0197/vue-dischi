@@ -1,21 +1,22 @@
 <template>
   <section>
       <header>
-          <i class="fab fa-spotify"></i>
+
+        <i class="fab fa-spotify"></i>
+
       </header>
 
       <div id="container">
 
-          <div id="containerDiscs">
+        <LoaderPage v-if="discList.length === 0"/>
 
-          <Discsubcomp
-          v-for="disc, i in discList" 
-          :key="i"
-          :details="disc"
-          />
-
-          </div>
-
+        <div v-else id="containerDiscs">
+        <Discsubcomp
+        v-for="disc, i in discList" 
+        :key="i"
+        :details="disc"
+        />
+        </div>
 
       </div>
       
@@ -28,12 +29,14 @@
 
 import axios from "axios";
 import Discsubcomp from '@/components/Discsubcomp.vue';
+import LoaderPage from '@/components/LoaderPage.vue';
 
 
 export default {
   name: 'Disccomp',
   components: {
-      Discsubcomp
+      Discsubcomp,
+      LoaderPage
   },
 
   data() {
@@ -51,13 +54,14 @@ export default {
   methods: {
       getdiscSpot() {
 
-          axios
-          .get(this.apiUrl)
-          .then((result) => {
-              
-              this.discList = result.data.response
+        axios
+        .get(this.apiUrl)
+        .then((result) => {
+            
+            this.discList = result.data.response
 
-          })
+        })
+        
       }
   }
   
@@ -87,6 +91,12 @@ header {
     background-color: #1E2D3B;
     overflow-y: scroll;
     
+
+    .loadingPage {
+        text-align: center;
+        font-size: 40px;
+        color: white;
+    }
 
     #containerDiscs {
         width: 70%;
