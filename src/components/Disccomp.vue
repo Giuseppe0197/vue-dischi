@@ -8,7 +8,7 @@
 
       <div id="container">
 
-        <Filterdisc/>
+        <Filterdisc @changeGenre="getGenre"/>
 
         <LoaderPage v-if="discList.length === 0"/>
 
@@ -47,12 +47,27 @@ export default {
       return {
           apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
 
-          discList: []
+          discList: [],
+
+          selecedOption: "",
       }
   },
 
   created() {
       this.getdiscSpot()
+  },
+
+  computed: {
+
+      filteredGenre() {
+          if (this.selecedOption === ""){
+              return this.discList
+          }
+            return this.discList.filter((item) => {
+                return item.genre.includes(this.selecedOption)
+            })
+      }
+
   },
 
   methods: {
@@ -66,9 +81,12 @@ export default {
 
         })
         
+      },
+
+      getGenre(genreType) {
+          this.selecedOption = genreType
       }
   }
-  
 }
 
 </script>

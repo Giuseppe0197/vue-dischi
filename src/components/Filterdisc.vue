@@ -1,11 +1,11 @@
 <template>
 <div>
-    <select name="" id="">
-      <option value="all">tutti i generi</option>
-      <option value="rock">rock</option>
-      <option value="pop">pop</option>
-      <option value="jazz">jazz</option>
-      <option value="metal">metal</option>
+    <select @change="$emit('changeGenre', discChoice)" >
+      <option :value="all">tutti i generi</option>
+      <option :value="rock">rock</option>
+      <option :value="pop">pop</option>
+      <option :value="jazz">jazz</option>
+      <option :value="metal">metal</option>
   </select>
 </div>
   
@@ -17,6 +17,12 @@
 
 export default {
   name: 'Filterdisc',
+
+  data() {
+    return {
+      discChoice: ""
+    }
+  },
 }
 
 </script>
