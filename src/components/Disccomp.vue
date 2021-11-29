@@ -8,6 +8,8 @@
 
       <div id="container">
 
+        <Filterdisc/>
+
         <LoaderPage v-if="discList.length === 0"/>
 
         <div v-else id="containerDiscs">
@@ -30,13 +32,15 @@
 import axios from "axios";
 import Discsubcomp from '@/components/Discsubcomp.vue';
 import LoaderPage from '@/components/LoaderPage.vue';
+import Filterdisc from '@/components/Filterdisc.vue';
 
 
 export default {
   name: 'Disccomp',
   components: {
       Discsubcomp,
-      LoaderPage
+      LoaderPage,
+      Filterdisc
   },
 
   data() {
