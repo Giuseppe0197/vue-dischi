@@ -14,7 +14,7 @@
 
         <div v-else id="containerDiscs">
         <Discsubcomp
-        v-for="disc, i in discList" 
+        v-for="disc, i in filteredGenre" 
         :key="i"
         :details="disc"
         />
@@ -61,6 +61,8 @@ export default {
 
       filteredGenre() {
           if (this.selecedOption === ""){
+              return this.discList
+          } else if (this.selecedOption === "all") {
               return this.discList
           }
             return this.discList.filter((item) => {

@@ -1,11 +1,11 @@
 <template>
 <div>
-    <select @change="$emit('changeGenre', discChoice)" >
-      <option :value="all">tutti i generi</option>
-      <option :value="rock">rock</option>
-      <option :value="pop">pop</option>
-      <option :value="jazz">jazz</option>
-      <option :value="metal">metal</option>
+    <select @change="$emit('changeGenre', discChoice)" v-model="discChoice">
+      <option value="all">tutti i generi</option>
+      <option value="Rock">rock</option>
+      <option value="Pop">pop</option>
+      <option value="Jazz">jazz</option>
+      <option value="Metal">metal</option>
   </select>
 </div>
   
