@@ -32,6 +32,15 @@ export default {
 div {
     text-align: center;
     margin-bottom: 120px;
+
+    select {
+      width: 10%;
+      text-align: center;
+      background-color: transparent;
+      color: red;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
 }
 
 </style>

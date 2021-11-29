@@ -49,7 +49,7 @@ export default {
 
           discList: [],
 
-          selecedOption: "",
+          selectedOption: "",
       }
   },
 
@@ -60,13 +60,13 @@ export default {
   computed: {
 
       filteredGenre() {
-          if (this.selecedOption === ""){
+          if (this.selectedOption === ""){
               return this.discList
-          } else if (this.selecedOption === "all") {
+          } else if (this.selectedOption === "all") {
               return this.discList
           }
             return this.discList.filter((item) => {
-                return item.genre.includes(this.selecedOption)
+                return item.genre.includes(this.selectedOption)
             })
       }
 
@@ -86,7 +86,7 @@ export default {
       },
 
       getGenre(genreType) {
-          this.selecedOption = genreType
+          this.selectedOption = genreType
       }
   }
 }
