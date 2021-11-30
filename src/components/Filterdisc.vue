@@ -1,5 +1,5 @@
-<template>
-<div>
+<!-- <template>
+<div id="listadischi">
     <select @change="$emit('changeGenre', discChoice)" v-model="discChoice">
       <option value="all">tutti i generi</option>
       <option value="Rock">rock</option>
@@ -25,11 +25,11 @@ export default {
   },
 }
 
-</script>
+</script> -->
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-div {
+<!-- <style scoped lang="scss">
+#listadischi {
     text-align: center;
     margin-bottom: 120px;
 
@@ -43,4 +43,4 @@ div {
     }
 }
 
-</style>
+</style> -->

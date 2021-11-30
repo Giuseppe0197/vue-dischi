@@ -1,14 +1,14 @@
 <template>
   <section>
-      <header>
+      <!-- <header>
 
         <i class="fab fa-spotify"></i>
 
-      </header>
+      </header> -->
 
       <div id="container">
 
-        <Filterdisc @changeGenre="getGenre"/>
+        <!-- <Filterdisc @changeGenre="getGenre"/> -->
 
         <LoaderPage v-if="discList.length === 0"/>
 
@@ -32,7 +32,7 @@
 import axios from "axios";
 import Discsubcomp from '@/components/Discsubcomp.vue';
 import LoaderPage from '@/components/LoaderPage.vue';
-import Filterdisc from '@/components/Filterdisc.vue';
+/* import Filterdisc from '@/components/Filterdisc.vue'; */
 
 
 export default {
@@ -40,7 +40,11 @@ export default {
   components: {
       Discsubcomp,
       LoaderPage,
-      Filterdisc
+      /* Filterdisc */
+  },
+
+  props: {
+      selectedOption: String
   },
 
   data() {
@@ -49,7 +53,10 @@ export default {
 
           discList: [],
 
-          selectedOption: "",
+          /* selectedOption: "", */
+
+          genres: []
+
       }
   },
 
@@ -80,6 +87,14 @@ export default {
         .then((result) => {
             
             this.discList = result.data.response
+
+            this.discList.forEach(element => {
+                if(!this.genres.includes(element.genre)){
+                    this.genres.push(element.genre)
+                }
+            });
+
+            this.$emit("genreReady", this.genres)
 
         })
         

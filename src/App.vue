@@ -1,17 +1,40 @@
 <template>
   <div id="app">
-    <Disccomp/>
+
+    <MyHeader :genres="genreList" @changeGenre="startSearch"/>
+
+    <Disccomp :selectedOption="genreSearch" @genresReady="getGenreList"/>
   </div>
 </template>
 
 <script>
 
 import Disccomp from './components/Disccomp.vue'
+import MyHeader from './components/MyHeader.vue'
 
 export default {
   name: 'App',
   components: {
-    Disccomp
+    Disccomp,
+    MyHeader
+  },
+
+  data(){
+    return {
+      genreList: [],
+
+      genreSearch: ""
+    }
+  },
+
+  methods: {
+    getGenreList(allGenre){
+      this.genreList = allGenre
+    },
+
+    startSearch(genreSearch){
+      this.genreSearch = genreSearch
+    }
   }
 }
 </script>
