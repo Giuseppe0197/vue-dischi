@@ -66,6 +66,7 @@ header {
     #listadischi {
     float: right;
     margin-top: 20px;
+    margin-right: 20px;
 
     select {
       width: 20%;
@@ -74,6 +75,10 @@ header {
       color: red;
       text-transform: uppercase;
       font-weight: bold;
+
+      option {
+        background-color: #2E3A46;
+      }
     }
 }
 }
